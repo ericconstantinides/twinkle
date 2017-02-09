@@ -1,0 +1,44 @@
+.site-container {
+  max-width: 900px;
+  margin: 0 auto;
+}
+.js-twinkle {
+  display: none;
+  justify-content: center;
+  flex-flow: row wrap;
+  &.is-loaded {
+    display: flex;
+  }
+  img {
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    display: block;
+    transition: 0.25s;
+    transform: translatez(0);
+    transition-delay: 0s;
+    opacity: 0;
+    &[src*=".png"],
+    &[src*=".jpg"] {
+      height: 100%;
+      width: 100%;
+      object-fit: contain;
+    }
+    &.on {
+      opacity: 1;
+      transition-delay: 0.10s;
+    }
+    &.outgoing {
+      transition-timing-function: linear;
+      opacity: 0;
+    }
+  }
+}
+.js-twinkle__item {
+  position: relative;
+  width: 160px;
+  height: 160px;
+  margin: 1em;
+}
