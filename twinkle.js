@@ -15,15 +15,17 @@
     return array;
   }
 
-  var Twinkle = function(twinkleEl, twinkles, twinklesToReveal = 5, twinkleSpeed = 1000) {
+  var Twinkle = function(twinkleEl, twinkles, twinklesToReveal, twinkleSpeed) {
+    const DEFAULT_SPEED = 1000;
     this.twinkleEl = twinkleEl;
-    if (twinklesToReveal > twinkles.length - 1) {
-      twinklesToReveal = twinkles.length - 1;
+    if (twinklesToReveal > twinkles.length - 1 || twinklesToReveal === null) {
+      this.twinklesToReveal = twinkles.length - 1;
+    } else {
+      this.twinklesToReveal = twinklesToReveal;
     }
-    this.twinklesToReveal = twinklesToReveal;
     this.twinkles = twinkles;
     this.twinklePosition = 0;
-    this.twinkleSpeed = twinkleSpeed;
+    this.twinkleSpeed = twinkleSpeed === null ? DEFAULT_SPEED : twinkleSpeed;
   }
   Twinkle.prototype.makeSlotOrder = function() {
     let positionArray = []; // these will be the randomized positions
